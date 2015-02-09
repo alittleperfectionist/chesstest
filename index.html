@@ -750,16 +750,16 @@
             $(document).ready(function() {
                 board = new ChessBoard('board', cfg);
                 $.ajax({
-                    url: 'chessgame.orgfree.com/dbconnect.php',
-                    dataType: 'json',
-                    contentType: 'application/json',
+                    url: 'http://chessgame.orgfree.com/readData.php?id=1',
+                    // dataType: 'json',
+                    // contentType: 'application/json',
                     success: function(response) {
-                        alert("success");
-                        alert(response);
-                        board.position(response.fenstring.toString());
+                        // alert("success");
+                        var data = JSON.parse(response);
+                        board.position(data.fen);
                     },
                     error: function(response) {
-                        alert("error");
+                        // alert("error");
                         alert(response);
                     }
                 });
